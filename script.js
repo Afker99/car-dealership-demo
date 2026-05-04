@@ -5,12 +5,35 @@ const videos = [
   document.getElementById("vid3"),
 ];
 
-// Init: play first video if it exists
-if (videos[0]) {
-  videos[0].play();
+// Init function to handle layout based on screen size
+function initVideos() {
+  if (window.innerWidth <= 768) {
+    // Mobile/Tablet: all active, all play
+    cols.forEach((col) => col.classList.add("active"));
+    videos.forEach((vid) => {
+      if (vid) vid.play();
+    });
+  } else {
+    // Desktop: only first active by default
+    cols.forEach((col, i) => col.classList.toggle("active", i === 0));
+    videos.forEach((vid, i) => {
+      if (vid) {
+        if (i === 0) vid.play();
+        else vid.pause();
+      }
+    });
+  }
 }
 
+// Run on load
+initVideos();
+
+// Update on resize
+window.addEventListener("resize", initVideos);
+
 function setActive(index) {
+  if (window.innerWidth <= 768) return; // Disable hover effect on mobile
+  
   cols.forEach((col, i) => {
     col.classList.toggle("active", i === index);
     if (i === index) {
