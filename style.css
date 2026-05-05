@@ -41,6 +41,7 @@ body.page-transition-out::after {
   0% {
     transform: translateY(0%);
   }
+
   100% {
     transform: translateY(-100%);
   }
@@ -50,9 +51,20 @@ body.page-transition-out::after {
   0% {
     transform: translateY(100%);
   }
+
   100% {
     transform: translateY(0%);
   }
+}
+
+section {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 5rem 0 5rem 0;
 }
 
 
@@ -83,7 +95,8 @@ h4 {
 
 
 
-a, p {
+a,
+p {
   color: #444444;
   font-weight: 300;
   text-decoration: none;
@@ -124,7 +137,8 @@ ul {
   padding-bottom: 2rem;
 }
 
-.car-col video {
+.car-col video,
+.car-col iframe {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -251,11 +265,175 @@ footer a:hover {
   text-decoration-color: #676767;
 }
 
+
+/* *************************** Car page CSS *************************** */
+
+.container {
+  max-width: 86rem;
+  width: 100%;
+}
+
+
+/* Hero */
+.page-video-wrap {
+  width: 100%;
+  height: 95vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-video-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.7) 100%);
+}
+
+.page-video-title {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 3rem;
+  z-index: 5;
+}
+
+.page-video-title h1 {
+  color: #f1f1f1;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.page-video-title p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+
+/* Form */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero h2 {
+  font-size: 5rem;
+}
+
+.form-container {
+  margin-top: 5rem;
+  width: 100%;
+}
+
+form {
+  max-width: 50rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 150%;
+  letter-spacing: -0.01rem;
+  margin: 0 auto;
+}
+
+form>div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form>textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+
+form>.check-box-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+form>.check-box-container>input {
+  width: auto;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 200;
+  line-height: 150%;
+  letter-spacing: -0.01rem;
+  margin: 0;
+}
+
+.btn {
+  cursor: pointer;
+  color: #d6d6d6;
+  background-color: #282828;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 300;
+  padding: 1rem 3rem;
+  line-height: 1;
+  border: 0;
+  transition: all 0.3s ease-in-out;
+  width: max-content;
+}
+
+.btn:hover {
+  background-color: #090909;
+  box-shadow: 0 0 0.5rem 0 rgba(30, 30, 30, 0.278);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn-form {
+  margin: 0 auto;
+}
+
+
 @media (max-width: 768px) {
+
+  h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .page-video-title p {
+    text-align: center;
+  }
 
   .header {
     grid-template-columns: 1fr;
-    
+
   }
 
   .car-col {
@@ -275,11 +453,25 @@ footer a:hover {
   }
 
   .footer-links div {
-  gap: 1rem;
-  text-align: center;
-}
+    gap: 1rem;
+    text-align: center;
+  }
 
-.page-video-wrap {
+  /* ---------- Car page ---------- */
+  .page-video-title {
+    width: 90%;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .page-video-wrap {
     height: 75vh;
-}
+  }
+
+  /* Form */
+  .form-container {
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
 }
